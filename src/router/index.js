@@ -1,3 +1,4 @@
+// 路由
 import Vue from 'vue'
 import Router from 'vue-router'
 
@@ -33,6 +34,7 @@ import Layout from '@/layout'
 export const constantRoutes = [
   {
     path: '/login',
+    // 它这里直接做了导入，@ 指的是src 目录
     component: () => import('@/views/login/index'),
     hidden: true
   },
@@ -54,6 +56,20 @@ export const constantRoutes = [
       meta: { title: 'Dashboard', icon: 'dashboard' }
     }]
   },
+
+  // 自己加
+  {
+    path: '/',
+    component: Layout,
+    redirect: '/dashboard',
+    children: [{
+      path: 'dashboard',
+      name: 'Dashboard',
+      component: () => import('@/views/dashboard/index'),
+      meta: { title: '用户管理', icon: 'dashboard' }
+    }]
+  },
+
 
   {
     path: '/example',

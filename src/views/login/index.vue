@@ -10,7 +10,8 @@
         <span class="svg-container">
           <svg-icon icon-class="user" />
         </span>
-        <el-input
+        <!-- 输入帐号的输入框 -->
+        <el-input 
           ref="username"
           v-model="loginForm.username"
           placeholder="Username"
@@ -25,6 +26,7 @@
         <span class="svg-container">
           <svg-icon icon-class="password" />
         </span>
+        <!-- 输入密码的输入框 -->
         <el-input
           :key="passwordType"
           ref="password"
@@ -40,8 +42,11 @@
           <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
         </span>
       </el-form-item>
-
-      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">Login</el-button>
+      <!-- 登录按钮  -->
+      <!-- 点击之后会调用handleLogin 方法 -->
+      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">
+        Login
+      </el-button>
 
       <div class="tips">
         <span style="margin-right:20px;">username: admin</span>
@@ -67,13 +72,14 @@ export default {
     }
     const validatePassword = (rule, value, callback) => {
       if (value.length < 6) {
+        // 密码小于6位就会报错
         callback(new Error('The password can not be less than 6 digits'))
       } else {
         callback()
       }
     }
     return {
-      loginForm: {
+      loginForm: { 
         username: 'admin',
         password: '111111'
       },
@@ -106,10 +112,14 @@ export default {
       })
     },
     handleLogin() {
+      // 取到表单的数据进行验证
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
+          // 分了模块
+          // 直接将表单传递过去了
           this.$store.dispatch('user/login', this.loginForm).then(() => {
+            // 如果redirect 有值，就跳转到redirect 
             this.$router.push({ path: this.redirect || '/' })
             this.loading = false
           }).catch(() => {

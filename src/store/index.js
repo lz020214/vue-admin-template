@@ -8,6 +8,7 @@ import user from './modules/user'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
+  // 全局状态管理，分了模块
   modules: {
     app,
     settings,
