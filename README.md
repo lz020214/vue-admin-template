@@ -92,6 +92,9 @@ Modern browsers and Internet Explorer 10+.
 | --------- | --------- | --------- | --------- |
 | IE10, IE11, Edge| last 2 versions| last 2 versions| last 2 versions
 
+
+https://blog.csdn.net/muziiiii/article/details/138456952?spm=1001.2014.3001.5501
+
 ## License
 
 [MIT](https://github.com/PanJiaChen/vue-admin-template/blob/master/LICENSE) license.
